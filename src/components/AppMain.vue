@@ -11,16 +11,20 @@ export default {
         }
 
     },
-    methods() {
+    methods: {
+        getProjects() {
+            axios.get(this.apiUrl + 'projects').then((response) => {
+                this.projects = response.data.results.data;
+                console.log(response.data);
+            });
+        }
+
 
 
     },
 
     mounted() {
-        axios.get(this.apiUrl + 'projects').then((response) => {
-            this.projects = response.data.results.data;
-            console.log(response.data);
-        });
+        this.getProjects();
     }
 
 }
