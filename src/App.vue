@@ -1,4 +1,5 @@
 <script>
+import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
 
 import { store } from './data/store'
@@ -7,6 +8,7 @@ import axios from 'axios';
 export default {
   name: "App",
   components: {
+    AppHeader,
     AppMain
   },
 
@@ -15,11 +17,17 @@ export default {
       store,
     }
   },
+  methods: {
+
+  },
+  mounted() {
+
+  }
 }
 </script>
 
 <template>
-  <h1>CIAO SONO VUE!!</h1>
+  <AppHeader />
   <AppMain />
 </template>
 
