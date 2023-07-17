@@ -32,7 +32,7 @@ export default {
 
 <template>
     <h2>Ciao sono componente come stai? </h2>
-    <div v-for="project in projects">
+    <div class="card" v-for="project in projects">
         <h4>{{ project.name }}</h4>
         <h4>{{ project.type.name }}</h4>
         <h4> {{ project.description }}</h4>
