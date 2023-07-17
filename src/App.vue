@@ -1,12 +1,20 @@
 <script>
 import AppMain from './components/AppMain.vue'
+
+import { store } from './data/store'
+import axios from 'axios';
+
 export default {
-  data() {
-    return {}
-  },
+  name: "App",
   components: {
     AppMain
-  }
+  },
+
+  data() {
+    return {
+      store,
+    }
+  },
 }
 </script>
 
