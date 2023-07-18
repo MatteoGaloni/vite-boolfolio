@@ -2,8 +2,8 @@
 import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
 
-import { store } from './data/store'
-import axios from 'axios';
+// import { store } from './data/store'
+// import axios from 'axios';
 
 export default {
   name: "App",
@@ -14,7 +14,7 @@ export default {
 
   data() {
     return {
-      store,
+      // store,
     }
   },
   methods: {
@@ -29,6 +29,9 @@ export default {
 <template>
   <AppHeader />
   <AppMain />
+  <router-view></router-view>
+
+  <!-- move components in router.js -->
 </template>
 
 <style scoped></style>

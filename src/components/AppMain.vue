@@ -1,8 +1,7 @@
 <script>
-
 import { store } from '../data/store'
 import axios from 'axios';
-import ProjectCard from './ProjectCard.vue';
+import ProjectCard from '../pages/ProjectCard';
 
 export default {
     name: 'AppMain',
@@ -31,9 +30,8 @@ export default {
                 this.loading = false;
                 console.log(response.data);
             }).catch(err => {
-                this.projects = [];
                 this.loading = false;
-                this.loadingError = err + "something wrong";
+                this.loadingError = err.message;
             })
         }
     },
@@ -45,23 +43,24 @@ export default {
 </script>
 
 <template>
-    <template v-if="this.loading == true">
+    <template v-if="loading">
         <h5>La pagina sta caricando</h5>
+        <h3 v-if="loadingError">{{ loadingError }}</h3>
     </template>
-    <div class="container">
-        <div class="row">
-            <!-- <div class="card m-3 col-4" v-for="project in projects">
+    <div>
+        <!-- <div class="card m-3 col-4" v-for="project in projects">
                 <h4>{{ project.name }}</h4>
                 <h4>{{ project.type.name }}</h4>
                 <h4> {{ project.description }}</h4>
                 <a @click="getNextPage()">Next page</a>
             </div> -->
-            <section v-if="projects.length > 0">
+        <section class="container" v-if="projects.length > 0">
+            <div class="row">
                 <template v-for="project in projects">
                     <ProjectCard :project="project" />
                 </template>
-            </section>
-        </div>
+            </div>
+        </section>
     </div>
 </template>
 
