@@ -1,7 +1,7 @@
 <script>
 
 export default {
-    name: "AppMain",
+    name: "ProjectList",
     props: {
         project: Object
     }

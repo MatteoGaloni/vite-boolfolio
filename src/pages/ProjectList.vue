@@ -1,10 +1,10 @@
 <script>
-import { store } from '../data/store'
+// import { store } from '../data/store'
 import axios from 'axios';
-import ProjectCard from '../pages/ProjectCard';
+import ProjectCard from './ProjectCard.vue';
 
 export default {
-    name: 'AppMain',
+    name: 'ProjectList',
     components: {
         ProjectCard
     },
