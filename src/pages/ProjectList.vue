@@ -12,7 +12,7 @@ export default {
 
     data() {
         return {
-            apiUrl: "http://127.0.0.1:8000/api/",
+            apiUrl: "http://127.0.0.1:8000/ai/",
             projectsApi: "projects",
             loading: false,
             loadingError: false,
@@ -35,6 +35,7 @@ export default {
             }).catch(err => {
                 this.loading = false;
                 this.loadingError = err.message;
+                this.$router.push({ name: 'not-found' })
             });
 
         },
@@ -59,6 +60,7 @@ export default {
                 }).catch(err => {
                     this.loading = false;
                     this.loadingError = err.message;
+
                 });
             }
         },
@@ -66,7 +68,7 @@ export default {
         nextPage() {
             this.getProjects(this.currentProjectsPage + 1)
         },
-        prevPagePage() {
+        prevPage() {
             this.getProjects(this.currentProjectsPage - 1)
         },
     },

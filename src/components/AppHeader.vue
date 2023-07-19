@@ -1,7 +1,15 @@
 <script>
 
 export default {
-    name: "AppHeader"
+    name: "AppHeader",
+    data() {
+        return {
+            menuLinks: [
+                { linkText: 'Home', name: 'home' },
+                { linkText: 'Projects', name: 'projectsList' },
+            ]
+        }
+    }
 }
 
 </script>
@@ -11,11 +19,8 @@ export default {
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/allprojects">Projects</a>
+                    <li class="nav-item" v-for="item in menuLinks">
+                        <router-link :to='item' class="nav-link active" href="">{{ item.linkText }}</router-link>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
