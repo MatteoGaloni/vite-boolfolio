@@ -1,10 +1,10 @@
 <script>
 // import { store } from '../data/store'
 import axios from 'axios';
-import ProjectCard from './ProjectCard.vue';
+import ProjectCard from '../components/ProjectCard.vue';
 
 export default {
-    name: 'ProjectList',
+    name: 'ProjectListPage',
     components: {
         ProjectCard
     },
@@ -12,7 +12,7 @@ export default {
 
     data() {
         return {
-            apiUrl: "http://127.0.0.1:8000/ai/",
+            apiUrl: "http://127.0.0.1:8000/api/",
             projectsApi: "projects",
             loading: false,
             loadingError: false,

@@ -6,7 +6,7 @@ export default {
         return {
             menuLinks: [
                 { linkText: 'Home', name: 'home' },
-                { linkText: 'Projects', name: 'projectsList' },
+                { linkText: 'Projects', name: 'projectListPage' },
             ]
         }
     }

@@ -1,7 +1,7 @@
 <script>
 
 export default {
-    name: "ProjectList",
+    name: "ProjectListPage",
     props: {
         project: Object
     }
@@ -27,6 +27,12 @@ export default {
                 <div v-for="technology in project.technologies ">
                     <span>{{ technology.name }}</span>
                 </div>
+                <!-- <router-link :to="{ name: 'single-project', params: { id: project.slug } }" class="btn btn-primary">Show
+                    Project
+                </router-link> -->
+                <router-link :to="'/projects/project.slug'" class="btn btn-primary">Show
+                    Project
+                </router-link>
             </div>
         </div>
     </div>
