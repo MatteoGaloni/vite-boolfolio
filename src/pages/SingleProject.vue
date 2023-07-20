@@ -23,7 +23,6 @@ export default {
                 this.loadingError = err.message;
                 this.$router.push({ name: 'not-found' })
             });
-
         },
     },
     mounted() {
@@ -33,7 +32,29 @@ export default {
 </script>
 
 <template>
-    <section>
-        <h1>SONO IL SINGOLO PROGETTO</h1>
+    <section v-if="project">
+        <div class="container">
+            <div class="col-12">
+                <div class="card p-0 mb-4">
+                    <img class="card-img-top" :src="'http://127.0.0.1:8000/storage/' + project.img"
+                        :alt="project.type.name">
+                    <div class="card-body">
+                        <h1 class="text-center m-3">{{ project.title }}</h1>
+                        <div>
+                            <strong>Type: </strong>
+                            <span>{{ project.type ? project.type.name : "Niente da visualizzare" }}</span>
+                        </div>
+                        <div>
+                            <strong>Description: </strong>
+                            <p>{{ project.description }}</p>
+                        </div>
+                        <strong>Technologies: </strong>
+                        <div v-for="technology in project.technologies ">
+                            <span>{{ technology.name }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </template>

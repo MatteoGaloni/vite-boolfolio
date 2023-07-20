@@ -1,5 +1,5 @@
 <script>
-// import { store } from '../data/store'
+import { store } from '../data/store'
 import axios from 'axios';
 import ProjectCard from '../components/ProjectCard.vue';
 
@@ -9,13 +9,9 @@ export default {
         ProjectCard
     },
 
-
     data() {
         return {
-            apiUrl: "http://127.0.0.1:8000/api/",
-            projectsApi: "projects",
-            loading: false,
-            loadingError: false,
+            store,
             projects: [],
             currentProjectsPage: 0,
             totalProjectsPages: 0,
@@ -24,43 +20,39 @@ export default {
     },
     methods: {
         getFirstProjects() {
-            this.loading = true;
-            axios.get(this.apiUrl + this.projectsApi).then((response) => {
+            this.store.loading = true;
+            axios.get(this.store.apiUrl + this.store.projectsApi).then((response) => {
                 this.projects = response.data.results.data;
                 this.currentProjectsPage = response.data.results.current_page
                 this.totalProjectsPages = response.data.results.last_page
                 console.log(this.totalProjectsPages);
-                this.loading = false;
+                this.store.loading = false;
                 console.log(response.data);
             }).catch(err => {
-                this.loading = false;
-                this.loadingError = err.message;
+                this.store.loading = false;
+                this.store.loadingError = err.message;
                 this.$router.push({ name: 'not-found' })
             });
-
         },
 
         getProjects(pageNumber) {
             if (pageNumber && pageNumber > 0 && pageNumber <= this.totalProjectsPages) {
-
                 let config = {
                     params: {
                         page: pageNumber
                     }
                 }
-
-                this.loading = true;
-                axios.get(this.apiUrl + this.projectsApi, config).then((response) => {
+                this.store.loading = true;
+                axios.get(this.store.apiUrl + this.store.projectsApi, config).then((response) => {
                     this.projects = response.data.results.data;
                     this.currentProjectsPage = response.data.results.current_page
                     this.totalProjectsPages = response.data.results.last_page
                     console.log(this.totalProjectsPages);
-                    this.loading = false;
+                    this.store.loading = false;
                     console.log(response.data);
                 }).catch(err => {
-                    this.loading = false;
-                    this.loadingError = err.message;
-
+                    this.store.loading = false;
+                    this.store.loadingError = err.message;
                 });
             }
         },
@@ -80,9 +72,11 @@ export default {
 </script>
 
 <template>
-    <template v-if="loading">
-        <h5>La pagina sta caricando</h5>
-        <h3 v-if="loadingError">{{ loadingError }}</h3>
+    <template v-if="store.loading">
+        <h2 class="text-center text-white mt-5">
+            <i id="my-gear" class="fa-solid fa-gear fa-spin"></i>
+        </h2>
+        <h2 class="text-center" v-if="store.loadingError">{{ store.loadingError }}</h2>
     </template>
     <div>
         <section class="container" v-if="projects.length > 0">
@@ -92,7 +86,7 @@ export default {
                     <button @click="nextPage" class="btn btn-primary m-2">Next</button>
                 </div>
             </div>
-            <div class="row">
+            <div v-if="!store.loading" class="row">
                 <template v-for="project in projects">
                     <ProjectCard :project="project" />
                 </template>
@@ -101,4 +95,9 @@ export default {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+#my-gear{
+    font-size: 7rem;
+}
+</style>

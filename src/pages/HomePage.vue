@@ -10,9 +10,14 @@ export default {
 
 <template>
     <section>
-        <h1>SONO LA PAGINA HOME</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem velit et asperiores ab illum, labore minus
-            deleniti. Voluptatum sunt veniam culpa recusandae consequatur, reiciendis, nam, quaerat iusto velit porro fuga.
-        </p>
+        <div id="my-jumbo" class="container">
+            <h1 class="text-center text-white mt-4">My BoolFolio</h1>
+        </div>
     </section>
 </template>
+
+<style  scoped>
+#my-jumbo{
+   height: 80vh;
+}
+</style>

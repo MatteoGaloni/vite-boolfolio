@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav id="my-nav" class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -32,4 +32,8 @@ export default {
     </nav>
 </template>
 
-<style  scoped></style>
+<style  scoped>
+#my-nav{
+   height: 10vh;
+}
+</style>
