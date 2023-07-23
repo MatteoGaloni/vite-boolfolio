@@ -24,6 +24,12 @@ export default {
             <div v-for="technology in project.technologies ">
                 <span>{{ technology.name }}</span>
             </div>
+            <div>
+                <strong>Creatore: </strong>
+                <span>{{ project.user.name }}</span>
+                <strong> Email</strong>
+                <span>{{ project.user.email }}</span>
+            </div>
             <!-- <router-link :to="{ name: 'single-project', params: { slug: project.slug } }" class="btn btn-primary">Show
                     Project
                 </router-link> -->

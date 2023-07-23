@@ -1,8 +1,14 @@
 <script>
 import axios from 'axios';
+import ContactForm from '../components/ContactForm.vue';
+
 
 export default {
     name: "SingleProject",
+    components: {
+        ContactForm
+    },
+
     data() {
         return {
             apiUrl: "http://127.0.0.1:8000/api/",
@@ -34,7 +40,7 @@ export default {
 <template>
     <section v-if="project">
         <div class="container">
-            <div class="col-12">
+            <div class="col-5">
                 <div class="card p-0 mb-4">
                     <img class="card-img-top" :src="'http://127.0.0.1:8000/storage/' + project.img"
                         :alt="project.type.name">
@@ -52,8 +58,19 @@ export default {
                         <div v-for="technology in project.technologies ">
                             <span>{{ technology.name }}</span>
                         </div>
+                        <div>
+                            <strong>Creatore: </strong>
+                            <span>{{ project.user.name }}</span>
+                            <div>
+                                <strong> Email</strong>
+                                <span>{{ project.user.email }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-5">
+                <ContactForm />
             </div>
         </div>
     </section>
