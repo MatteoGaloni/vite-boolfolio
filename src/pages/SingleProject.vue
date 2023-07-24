@@ -40,37 +40,42 @@ export default {
 <template>
     <section v-if="project">
         <div class="container">
-            <div class="col-5">
-                <div class="card p-0 mb-4">
-                    <img class="card-img-top" :src="'http://127.0.0.1:8000/storage/' + project.img"
-                        :alt="project.type.name">
-                    <div class="card-body">
-                        <h1 class="text-center m-3">{{ project.title }}</h1>
-                        <div>
-                            <strong>Type: </strong>
-                            <span>{{ project.type ? project.type.name : "Niente da visualizzare" }}</span>
-                        </div>
-                        <div>
-                            <strong>Description: </strong>
-                            <p>{{ project.description }}</p>
-                        </div>
-                        <strong>Technologies: </strong>
-                        <div v-for="technology in project.technologies ">
-                            <span>{{ technology.name }}</span>
-                        </div>
-                        <div>
-                            <strong>Creatore: </strong>
-                            <span>{{ project.user.name }}</span>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <div class="card p-0">
+                        <img class="card-img-top" :src="'http://127.0.0.1:8000/storage/' + project.img"
+                            :alt="project.type.name">
+                        <div class="card-body">
+                            <h1 class="text-center m-3">{{ project.title }}</h1>
                             <div>
-                                <strong> Email</strong>
-                                <span>{{ project.user.email }}</span>
+                                <strong>Type: </strong>
+                                <span>{{ project.type ? project.type.name : "Niente da visualizzare" }}</span>
+                            </div>
+                            <div>
+                                <strong>Description: </strong>
+                                <p>{{ project.description }}</p>
+                            </div>
+                            <strong>Technologies: </strong>
+                            <div v-for="technology in project.technologies ">
+                                <span>{{ technology.name }}</span>
+                            </div>
+                            <div>
+                                <strong>Creatore: </strong>
+                                <span>{{ project.user.name }}</span>
+                                <div>
+                                    <strong>Email: </strong>
+                                    <span>{{ project.user.email }}</span>
+                                </div>
+                            </div>
+                            <div>
+                                {{ project.id }}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-5">
-                <ContactForm />
+                <div class="col-6">
+                    <ContactForm :projectId="project.id" />
+                </div>
             </div>
         </div>
     </section>

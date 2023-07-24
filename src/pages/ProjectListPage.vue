@@ -88,7 +88,9 @@ export default {
             </div>
             <div v-if="!store.loading" class="row">
                 <template v-for="project in projects">
-                    <ProjectCard :project="project" />
+                    <div class="col">
+                        <ProjectCard :project="project" />
+                    </div>
                 </template>
             </div>
         </section>
@@ -96,8 +98,7 @@ export default {
 </template>
 
 <style scoped>
-
-#my-gear{
+#my-gear {
     font-size: 7rem;
 }
 </style>
